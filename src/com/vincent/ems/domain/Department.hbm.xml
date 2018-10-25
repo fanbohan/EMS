@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+   
+<hibernate-mapping>
+	<class name="com.vincent.ems.domain.Department" table="department">
+		<id name="did" column="did">
+			<generator class="native"/>
+		</id>
+		<property name="dname" column="dname" length="20" />
+		<property name="ddesc" column="ddesc" length="100"/>
+		
+		<!-- 关联关系映射 -->
+		<set name="emloyees" cascade="delete" inverse="true"><!-- inverse 放弃外键维护权 -->
+			<key column="dno" /><!-- 外键的名称 -->
+			<one-to-many class="com.vincent.ems.domain.Employee"/>
+		</set>
+	</class>
+</hibernate-mapping>

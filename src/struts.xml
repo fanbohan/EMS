@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts> 
+
+	<package name="EMS" extends="struts-default"  namespace="/">
+		<action name="employee_*" class="employeeAction" method="{1}"><!-- method="{1}"是在用通配符的时候用的 ，代替* ，相当于通配符，“1”表示第一个通配符-->
+		  <result name="input">/index.jsp</result>
+		  <result name="success" type="redirect">/frame.jsp</result>
+		  <result name="findAll">/statics/frame/listEmployee.jsp</result>
+		  <result name="saveUI">/statics/frame/addEmployee.jsp</result>
+		  <result name="editSuccess">/statics/frame/editEmployee.jsp</result>
+		  <result name="saveSuccess" type="redirectAction">employee_findAll.action</result>
+		  <result name="updateSuccess" type="redirectAction">employee_findAll.action</result>
+		  <result name="deleteSuccess" type="redirectAction">employee_findAll.action</result>
+		</action>
+
+		<action name="department_*" class="departmentAction" method="{1}">
+		  <result name="findAll">/statics/frame/listDep.jsp</result>
+		  <result name="saveUI">/statics/frame/addDepartment.jsp</result>
+		  <result name="editSuccess">/statics/frame/editDept.jsp</result>
+		  <result name="saveSuccess" type="redirectAction">department_findAll.action</result>
+		  <result name="updateSuccess" type="redirectAction">department_findAll.action</result>
+		  <result name="deleteSuccess" type="redirectAction">department_findAll.action</result>
+		</action>
+	</package>
+
+</struts>
